@@ -20,10 +20,10 @@ function checkMutations(mutations) {
     for (const mutation of mutations) {
         if (mutation.type==='childList') {
             for (const target of mutation.addedNodes) {
-                addTree(target);
+                target.nodeType === 1 && addTree(target);
             }
             for (const target of mutation.removedNodes) {
-                removeTree(target);
+                target.nodeType === 1 && removeTree(target);
             }
         }
         if (mutation.type==='attributes') {
@@ -43,7 +43,7 @@ class _animationObserver {
         this.style = document.createElement('style');
         this.animationName = `u1-selObs-${animationCounter++}`;
 
-        this.style.innerHTML = 
+        this.style.innerHTML =
             `@keyframes ${this.animationName}{}`+
             `${selector}{animation:${this.animationName} 1ms}`;
         document.head.append(this.style);

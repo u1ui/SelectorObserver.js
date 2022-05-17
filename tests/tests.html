@@ -44,13 +44,11 @@
 
         it('add dynamicly:', done => {
             lastAdded = lastRemoved = null;
-            console.log(lastAdded)
-            console.log(lastAdded)
-            // el1.after(el2)
-            // setTimeout(()=>{
-            //     chai.expect(lastAdded).to.equal(el2);
-            //     done();
-            // })
+            el1.after(el2)
+            setTimeout(()=>{
+                chai.expect(lastAdded).to.equal(el2);
+                done();
+            })
         });
 
         it('remove class:', done => {
@@ -66,6 +64,7 @@
             lastAdded = lastRemoved = null;
             el2.remove();
             setTimeout(()=>{
+                console.log(lastRemoved, el2)
                 chai.expect(lastRemoved).to.equal(el2);
                 done();
             })
