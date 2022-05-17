@@ -37,8 +37,9 @@ function checkMutations(mutations) {
 let animationCounter = 0;
 let aObservers = new Set();
 class _animationObserver {
-    constructor(selector, callback) {
-        this.callback = callback;
+    constructor(selector, on, off) {
+        this.on = on;
+        this.off = off;
         // todo?: reuse style element if selector already exists
         this.style = document.createElement('style');
         this.animationName = `u1-selObs-${animationCounter++}`;
@@ -46,8 +47,8 @@ class _animationObserver {
         this.style.innerHTML =
         `@keyframes ${this.animationName}{}\n`+
         `@keyframes ${this.animationName}-end{}\n`+
-        `${selector}{animation:${this.animationName} 1ms}`;
-            `.u1-selObs-tracked:is(${selector}){animation:${this.animationName}-end 1ms}`;
+        `${selector}{animation:${this.animationName} 1ms}`+
+        `.u1-selObs-tracked:is(${selector}){animation:${this.animationName}-end 1ms}`;
         document.head.append(this.style);
         aObservers.add(this);
     }
@@ -59,10 +60,11 @@ class _animationObserver {
 document.addEventListener('animationstart', e => { // todo: remove/add listener by ussage
     for (const observer of aObservers) {
         if (e.animationName === observer.animationName) {
-            observer.callback(e.target);
+            observer.on(e.target);
+            e.target.classList.add('u1-selObs-tracked');
         }
         if (e.animationName === observer.animationName+'-end') {
-            observer.callback(e.target);
+            observer.off(e.target);
         }
     }
 });
