@@ -23,5 +23,5 @@ o.observer('.el', {checkAnimation: true});
     
 ```
 
-Like this, you can event watch selectors like `.el:has(img:hover) > tr:nth-child(2)`
+Like this, you can event watch selectors like `.el:has(img:hover) > tr:nth-child(2)`  
 `off` does not work right now.
