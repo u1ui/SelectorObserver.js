@@ -46,6 +46,7 @@ class _animationObserver {
         this.style.innerHTML =
             `@keyframes ${this.animationName}{}\n`+
             `${selector}{animation:${this.animationName} 1ms}`;
+            `.u1-selObs-tracked:is(${selector}){animation:${this.animationName}-end 1ms}`;
         document.head.append(this.style);
         aObservers.add(this);
     }
