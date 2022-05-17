@@ -33,7 +33,7 @@ function checkMutations(mutations) {
 }
 
 
-// animation observer (beta)
+// animation observer (beta), todo: refine and performance tests
 let animationCounter = 0;
 let aObservers = new Set();
 class _animationObserver {
