@@ -66,8 +66,9 @@
             const el = document.createElement('div');
             el.classList.add('wrapper');
             el1.after(el);
+            el.after(el2)
             setTimeout(()=>{
-                chai.expect(lastRemoved).to.equal(el2);
+                chai.expect(lastAdded).to.equal(el2);
             })
         });
 
