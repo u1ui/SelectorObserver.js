@@ -81,6 +81,7 @@
 
         it('add after disconnect:', done => {
             lastAdded = lastRemoved = null;
+            o.disconnect();
             el1.insertAdjacentHTML('afterend', '<div class=item id=afterDisconnect>after disconnect</div>');
             setTimeout(()=>{
                 chai.expect(lastAdded).to.equal(null);
