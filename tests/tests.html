@@ -104,17 +104,14 @@
 
 
     describe('SelectorObserver check by animationend', () => {
-        it('remove parent class: (should not work)', done => {
+        it('remove parent class:', done => {
             let o = new SelectorObserver({
                 on: el => {
-                    console.log(el)
-                },
-                off: el => {
-                    console.log(el)
                     chai.expect(el).to.equal(null);
-                    container.classList.add('container');
+//                    container.classList.add('container');
                 }
             })
+            container.classList.remove('container');
             o.observe('.container .item', {checkAnimation: true});
             container.classList.add('container');
         });

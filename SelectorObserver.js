@@ -85,7 +85,6 @@ export class SelectorObserver {
 
         if (options && options.checkAnimation) {
             this.aniObserver = new _animationObserver(this.selector, el=>{
-                console.log(el)
                 el.matches(this.selector) ? this._add(el) : this._remove(el);
             });
         }
