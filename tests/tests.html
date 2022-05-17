@@ -17,32 +17,82 @@
         mocha.setup('bdd');
         mocha.checkLeaks();
     </script>
-    <script src="./constructor.js" type=module></script>
-    <script src="./setters.js" type=module></script>
-    <script src="./getters.js" type=module></script>
-    <script>
 
-describe('setter', function () {
-    const body = document.body;
-    it('setting className on singel element', function () {
-        $(body).className = 'test';
-        chai.expect(body.className).to.equal('test');
+
+    <script type=module>
+    import {SelectorObserver} from '../SelectorObserver.js';
+
+    describe('SelectorObserver', () => {
+        let lastAdded = null;
+        let lastRemoved = null;
+        let o = new SelectorObserver({
+            on: el => lastAdded = el ,
+            off : el => lastRemoved = el ,
+        });
+        o.observe('.item');
+
+        it('add element 2:', () => {
+            el1.insertAdjacentHTML('afterend', '<div class=item id=el2>element 2</div>');
+
+        });
+
+        it('removing class from element 2:', () => {
+            el2.classList.remove('item');
+        });
+
+        it('adding class to element 2:', () => {
+            el2.classList.add('item');
+        });
+
+        it('remove element 2:', () => {
+            el2.remove();
+        });
+
+        it('add wrapped:', () => {
+            el1.insertAdjacentHTML('afterend', '<div id=wrapped><div class="wrapped item">wrapped</div></div>');
+        });
+
+        it('remove wrapped:', () => {
+            wrapped.remove();
+        });
+
+        it('add after disconnect:', () => {
+            el1.insertAdjacentHTML('afterend', '<div class=item>after disconnect</div>');
+        });
+
+        it('disconnect:', () => {
+            o.disconnect();
+        });
+
+        it('add after disconnect:', () => {
+            el1.insertAdjacentHTML('afterend', '<div class=item>after disconnect</div>');
+        });
     });
-    it('setting className on multiple elements', function () {
-        $('body, head').className = 'test2';
-        chai.expect(document.body.className).to.equal('test2');
-        chai.expect(document.head.className).to.equal('test2');
+
+    describe('setter', function () {
+        const body = document.body;
+
+
+
+        it('setting className on singel element', function () {
+            $(body).className = 'test';
+            chai.expect(body.className).to.equal('test');
+        });
+        it('setting className on multiple elements', function () {
+            $('body, head').className = 'test2';
+            chai.expect(document.body.className).to.equal('test2');
+            chai.expect(document.head.className).to.equal('test2');
+        });
+        it('setting multiple events', function () {
+            var listener = function(){ };
+            $('body, head').onmouseover = listener;
+            chai.expect(document.body.onmouseover).to.equal(listener);
+            chai.expect(document.head.onmouseover).to.equal(listener);
+        });
+        it('setting on void list', function () {
+            $('.doesnotExists').classList = 'xyz';
+        });
     });
-    it('setting multiple events', function () {
-        var listener = function(){ };
-        $('body, head').onmouseover = listener;
-        chai.expect(document.body.onmouseover).to.equal(listener);
-        chai.expect(document.head.onmouseover).to.equal(listener);
-    });
-    it('setting on void list', function () {
-        $('.doesnotExists').classList = 'xyz';
-    });
-});
     </script>
     <script class="mocha-exec" type=module>
       mocha.run();
