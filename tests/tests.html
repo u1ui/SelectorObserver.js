@@ -32,7 +32,7 @@
             on: el => lastAdded = el ,
             off : el => lastRemoved = el ,
         });
-        o.observe('.container > .item');
+        o.observe('.container .item');
 
         let el2 = document.createElement('div');
         el2.classList.add('item');
@@ -60,24 +60,12 @@
             })
         });
 
-        it('remove element:', done => {
-            lastAdded = lastRemoved = null;
-            el2.remove();
-            setTimeout(()=>{
-                console.log(lastRemoved, el2)
-                chai.expect(lastRemoved).to.equal(el2);
-                done();
-            })
-        });
 
-        /*
         it('add wrapped:', done => {
             lastAdded = lastRemoved = null;
-            console.log(lastAdded)
-            el1.insertAdjacentHTML('afterend', '<div id=wrapper><div class=item id=el2>dynamic</div></div>');
+            el1.insertAdjacentHTML('afterend', '<div id=wrapper><div class=item id=el2>wrapped</div></div>');
             setTimeout(()=>{
-                console.log(lastAdded)
-                chai.expect(lastAdded).to.equal(el2);
+                chai.expect(lastAdded.id).to.equal('el2');
                 done();
             })
         });
@@ -86,10 +74,10 @@
             lastAdded = lastRemoved = null;
             wrapper.remove();
             setTimeout(()=>{
-                chai.expect(lastRemoved).to.equal(el2);
+                chai.expect(lastRemoved.id).to.equal('el2');
+                done();
             })
         });
-        */
 
         it('add after disconnect:', done => {
             o.disconnect();
