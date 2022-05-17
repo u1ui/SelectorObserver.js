@@ -37,11 +37,9 @@ function checkMutations(mutations) {
 let animationCounter = 0;
 let aObservers = new Set();
 class _animationObserver {
-    constructor(selector, on, off) {
+    constructor(selector, on) {
         this.on = on;
-        this.off = off;
-        // todo?: reuse style element if selector already exists
-        this.style = document.createElement('style');
+        this.style = document.createElement('style'); // todo?: reuse style element if selector already exists
         this.animationName = `u1-selObs-${animationCounter++}`;
 
         this.style.innerHTML =
@@ -86,8 +84,6 @@ export class SelectorObserver {
 
         if (options && options.checkAnimation) {
             this.aniObserver = new _animationObserver(this.selector, el=>{
-                el.matches(this.selector) ? this._add(el) : this._remove(el);
-            }, el=>{
                 el.matches(this.selector) ? this._add(el) : this._remove(el);
             });
         }
