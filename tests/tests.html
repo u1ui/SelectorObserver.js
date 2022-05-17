@@ -72,9 +72,9 @@
 
         it('add wrapped:', done => {
             lastAdded = lastRemoved = null;
-            el1.insertAdjacentHTML('afterend', '<div id=wrapper><div class=item id=el2>wrapped</div></div>');
+            el1.insertAdjacentHTML('afterend', '<div id=wrapper><div class=item id=el3>wrapped</div></div>');
             setTimeout(()=>{
-                chai.expect(lastAdded.id).to.equal('el2');
+                chai.expect(lastAdded.id).to.equal('el3');
                 done();
             })
         });
@@ -83,7 +83,7 @@
             lastAdded = lastRemoved = null;
             wrapper.remove();
             setTimeout(()=>{
-                chai.expect(lastRemoved.id).to.equal('el2');
+                chai.expect(lastRemoved.id).to.equal('el3');
                 done();
             })
         });
@@ -91,13 +91,15 @@
         it('move node but keep it matched to the selector:', done => {
             lastAdded = lastRemoved = null;
             el2.remove();
-            container.prepend(el2);
+            setTimeout(()=>{
+//                container.prepend(el2);
+            })
             setTimeout(()=>{
                 console.log(lastAdded, lastRemoved)
                 chai.expect(lastRemoved.id).to.equal('el2');
                 chai.expect(lastRemoved.id).to.equal('el2');
                 done();
-            })
+            },100)
         });
 return;
         it('add after disconnect:', done => {
