@@ -65,6 +65,7 @@ document.addEventListener('animationstart', e => { // todo: remove/add listener 
         }
         if (e.animationName === observer.animationName+'-end') {
             observer.off(e.target);
+            e.target.classList.remove('u1-selObs-tracked');
         }
     }
 });
@@ -94,7 +95,6 @@ export class SelectorObserver {
             this.aniObserver = new _animationObserver(this.selector, el=>{
                 el.matches(this.selector) ? this._add(el) : this._remove(el);
             }, el=>{
-                console.log(el)
                 el.matches(this.selector) ? this._add(el) : this._remove(el);
             });
         }
