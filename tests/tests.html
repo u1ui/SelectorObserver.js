@@ -62,11 +62,11 @@
 
         it('remove parent class: (should not work)', done => {
             lastAdded = lastRemoved = null;
-            container.classList.remove('item');
+            container.classList.remove('container');
             setTimeout(()=>{
                 chai.expect(lastRemoved).to.equal(null);
                 done();
-                container.classList.add('item');
+                container.classList.add('container');
             });
         });
 
@@ -137,13 +137,13 @@
 
         it('remove parent class:', done => {
             lastAdded = lastRemoved = null;
-            container.classList.remove('item');
+            container.classList.remove('container');
+
             setTimeout(()=>{
-                console.log(lastRemoved)
                 chai.expect(lastRemoved).to.equal(null);
+                container.classList.add('container');
                 done();
-                container.classList.add('item');
-            },200);
+            },1);
         });
 
         it('add wrapped:', done => {
