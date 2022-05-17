@@ -34,13 +34,17 @@
         });
         o.observe('.container > .item');
 
+        let el2 = document.createElement('div');
+        el2.classList.add('item');
+        el2.id = 'el2';
+
         it('found existing:', () => {
             chai.expect(lastAdded).to.equal(el1);
         });
 
         it('add dynamicly:', () => {
             lastAdded = lastRemoved = null;
-            el1.insertAdjacentHTML('afterend', '<div class=item id=el2>dynamic</div>');
+            el1.after(el2)
             setTimeout(()=>{
                 chai.expect(lastAdded).to.equal(el2);
             })
