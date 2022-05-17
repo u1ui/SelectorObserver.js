@@ -32,7 +32,7 @@
             on: el => lastAdded = el ,
             off : el => lastRemoved = el ,
         });
-        o.observe('.container .item', {xcheckAnimation: true, xcheckMutations:false});
+        o.observe('.container .item', {checkAnimation: true, checkMutations:false});
 
         let el2 = document.createElement('div');
         el2.classList.add('item');
