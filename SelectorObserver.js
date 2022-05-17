@@ -33,13 +33,17 @@ function checkMutations(mutations) {
 }
 
 
-// animation observer
+// animation observer (beta)
 let animationCounter = 0;
 let aObservers = new Set();
 class _animationObserver {
     constructor(selector, on) {
         this.on = on;
-        this.style = document.createElement('style'); // todo?: reuse style element if selector already exists
+        // todo?: reuse style element if selector already exists
+        // or better: use same style element for all selectors?
+        // this way we dont overwrite elements targeting by multiple observers,
+        // but we have to match the selector for every observer
+        this.style = document.createElement('style');
         this.animationName = `u1-selObs-${animationCounter++}`;
 
         this.style.innerHTML =
