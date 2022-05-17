@@ -41,6 +41,7 @@
         it('add dynamicly:', () => {
             const el = document.createElement('div');
             el.classList.add('item');
+            el.id = 'el2';
             el1.after(el);
             setTimeout(()=>{
                 chai.expect(el).to.equal(lastAdded);
@@ -52,10 +53,6 @@
             setTimeout(()=>{
                 chai.expect(lastRemoved).to.equal(el1);
             })
-        });
-
-        it('add class:', () => {
-            el1.classList.add('item');
         });
 
         it('remove element 2:', () => {
