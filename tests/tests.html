@@ -25,7 +25,7 @@
     <script type=module>
     import {SelectorObserver} from '../SelectorObserver.js';
 
-    describe('SelectorObserver', done => {
+    describe('SelectorObserver', () => {
         let lastAdded = null;
         let lastRemoved = null;
         let o = new SelectorObserver({
@@ -94,17 +94,16 @@
             el1.insertAdjacentHTML('afterend', '<div class=item id=afterDisconnect>after disconnect</div>');
             setTimeout(()=>{
                 chai.expect(lastAdded).to.equal(null);
+                afterDisconnect.remove();
                 done();
             });
         });
 
-        done();
     });
 
 
 
     describe('SelectorObserver check by animationend', () => {
-        container.innerHTML = ''
 
         let lastAdded = null;
         let lastRemoved = null;
@@ -117,10 +116,6 @@
         let el2 = document.createElement('div');
         el2.classList.add('item');
         el2.id = 'el2';
-
-        it('found existing:', () => {
-            chai.expect(lastAdded).to.equal(el1);
-        });
 
         it('add dynamicly:', done => {
             lastAdded = lastRemoved = null;
