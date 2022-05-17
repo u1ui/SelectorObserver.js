@@ -38,28 +38,6 @@
         el2.classList.add('item');
         el2.id = 'el2';
 
-        it('found existing:', () => {
-            chai.expect(lastAdded).to.equal(el1);
-        });
-
-        it('add dynamicly:', done => {
-            lastAdded = lastRemoved = null;
-            el1.after(el2)
-            setTimeout(()=>{
-                chai.expect(lastAdded).to.equal(el2);
-                done();
-            })
-        });
-
-        it('remove class:', done => {
-            lastAdded = lastRemoved = null;
-            el2.classList.remove('item');
-            setTimeout(()=>{
-                chai.expect(lastRemoved).to.equal(el2);
-                done();
-            })
-        });
-
         it('remove parent class: (should not work)', done => {
             lastAdded = lastRemoved = null;
             container.classList.remove('container');
