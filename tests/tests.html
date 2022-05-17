@@ -60,14 +60,15 @@
             })
         });
 
-        it('nested, add parent class: (should not work)', done => {
-            lastAdded = lastRemoved = null;
-            container.classList.remove('container');
-            setTimeout(()=>{
-                chai.expect(lastRemoved).to.equal(null);
-                done();
-                container.classList.add('container');
-            });
+        it('nested, add parent class:', done => {
+            let o = new SelectorObserver({
+                on: el => {
+                    chai.expect(el.id).to.equal('el1');
+                    done();
+                }
+            })
+            o.observe('.textx > .item', {checkAnimation: true});
+            container.classList.add('testx');
         });
 
         it('add wrapped:', done => {
@@ -114,7 +115,6 @@
             o.observe('.test #el1:first-child', {checkAnimation: true});
             container.classList.add('test');
         });
-
     });
 
     </script>
