@@ -54,17 +54,6 @@ setTimeout(()=>{
 }, 6000);
 
 
-
-{
-    let o = new SelectorObserver({
-        on  : el=>console.log('mouseover',el),
-        off : el=>console.log('mouseout',el),
-    });
-    console.log('observer .item:hover')
-    o.observe('.item:hover', {checkAnimation:true});
-}
-
-
 function addALotOfElements(){
     let html = '<div id=aLot style="font-size:7px" xhidden>';
     for (let i=0; i<10000; i++) {
@@ -75,7 +64,6 @@ function addALotOfElements(){
 }
 
 
-/*
 setTimeout(()=>{
     const time = performance.now();
     addALotOfElements();
@@ -88,7 +76,6 @@ setTimeout(()=>{
     addALotOfElements();
     console.log('added 100000 elements after disconnect', performance.now()-time);
 }, 7000);
-*/
 
 
 </script>
