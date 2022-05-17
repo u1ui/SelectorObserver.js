@@ -44,8 +44,9 @@ class _animationObserver {
         this.animationName = `u1-selObs-${animationCounter++}`;
 
         this.style.innerHTML =
-            `@keyframes ${this.animationName}{}\n`+
-            `${selector}{animation:${this.animationName} 1ms}`;
+        `@keyframes ${this.animationName}{}\n`+
+        `@keyframes ${this.animationName}-end{}\n`+
+        `${selector}{animation:${this.animationName} 1ms}`;
             `.u1-selObs-tracked:is(${selector}){animation:${this.animationName}-end 1ms}`;
         document.head.append(this.style);
         aObservers.add(this);
@@ -58,6 +59,9 @@ class _animationObserver {
 document.addEventListener('animationstart', e => { // todo: remove/add listener by ussage
     for (const observer of aObservers) {
         if (e.animationName === observer.animationName) {
+            observer.callback(e.target);
+        }
+        if (e.animationName === observer.animationName+'-end') {
             observer.callback(e.target);
         }
     }
