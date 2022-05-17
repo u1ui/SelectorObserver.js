@@ -25,7 +25,7 @@
     <script type=module>
     import {SelectorObserver} from '../SelectorObserver.js';
 
-    describe('SelectorObserver', () => {
+    describe('SelectorObserver', done => {
         let lastAdded = null;
         let lastRemoved = null;
         let o = new SelectorObserver({
@@ -98,14 +98,13 @@
             });
         });
 
+        done();
     });
 
 
 
     describe('SelectorObserver check by animationend', () => {
-        document.querySelector('#container').innerHTML = '<div class=item id=el1>added before</div>';
-        console.log(container.innerHTML)
-        return;
+        container.innerHTML = ''
 
         let lastAdded = null;
         let lastRemoved = null;
