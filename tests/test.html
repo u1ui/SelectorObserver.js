@@ -54,8 +54,18 @@ setTimeout(()=>{
 }, 6000);
 
 
+/*
+{
+    let o = new SelectorObserver({
+        on  : el=>console.log('mouseover',el),
+        off : el=>console.log('mouseout',el),
+    });
+    o.observe('.item:hover', {checkAnimation:true});
+}
+*/
+
 function addALotOfElements(){
-    let html = '<div id=aLot style="font-size:7px" xhidden>';
+    let html = '<div id=aLot style="font-size:7px" hidden>';
     for (let i=0; i<10000; i++) {
         html += '<div class=item>item '+(i+1)+'</div>';
     }
