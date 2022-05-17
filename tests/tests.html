@@ -31,23 +31,17 @@
 
         it('remove parent class: (should not work)', done => {
 
+
             let o = new SelectorObserver({
                 on: el => {
+                    chai.expect(lastRemoved).to.equal(null);
                     chai.expect(el).to.equal(null);
+                    container.classList.add('container');
                 }
             }).observe('.container .item');
 
-            let el2 = document.createElement('div');
-            el2.classList.add('item');
-            el2.id = 'el2';
-
-            lastAdded = lastRemoved = null;
             container.classList.remove('container');
-            setTimeout(()=>{
-                chai.expect(lastRemoved).to.equal(null);
-                done();
-                container.classList.add('container');
-            });
+
         });
 
         it('add wrapped:', done => {
