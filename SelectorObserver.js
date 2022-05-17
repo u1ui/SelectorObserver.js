@@ -59,7 +59,7 @@ document.addEventListener('animationstart', e => { // todo: remove/add listener 
     for (const observer of aObservers) {
         if (e.animationName === observer.animationName) {
             observer.on(e.target);
-            e.target.classList.add('u1sOTracked');
+            e.target.classList.toggle('u1sOTracked');
         }
     }
 });
