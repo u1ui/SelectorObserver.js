@@ -28,17 +28,19 @@
     describe('SelectorObserver', () => {
         let lastAdded = null;
         let lastRemoved = null;
-        let o = new SelectorObserver({
-            on: el => lastAdded = el ,
-            off : el => lastRemoved = el ,
-        });
-        o.observe('.container .item');
-
-        let el2 = document.createElement('div');
-        el2.classList.add('item');
-        el2.id = 'el2';
 
         it('remove parent class: (should not work)', done => {
+
+            let o = new SelectorObserver({
+                on: el => {
+                    chai.expect(el).to.equal(null);
+                }
+            }).observe('.container .item');
+
+            let el2 = document.createElement('div');
+            el2.classList.add('item');
+            el2.id = 'el2';
+
             lastAdded = lastRemoved = null;
             container.classList.remove('container');
             setTimeout(()=>{
