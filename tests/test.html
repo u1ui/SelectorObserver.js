@@ -73,7 +73,6 @@ function addALotOfElements(){
     document.body.insertAdjacentHTML('beforeend', html);
 }
 
-
 setTimeout(()=>{
 
     let o = new SelectorObserver({
@@ -84,13 +83,17 @@ setTimeout(()=>{
 
     const time = performance.now();
     addALotOfElements();
-    console.log('added 100000 elements', performance.now()-time);
+    requestAnimationFrame(()=>{
+        console.log('added 100000 elements', performance.now()-time);
+    })
 }, 6000);
 
 setTimeout(()=>{
     const time = performance.now();
     addALotOfElements();
-    console.log('added 100000 elements after disconnect', performance.now()-time);
+    requestAnimationFrame(()=>{
+        console.log('added 100000 elements', performance.now()-time);
+    })
 }, 7000);
 
 
