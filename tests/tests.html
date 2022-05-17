@@ -18,7 +18,9 @@
         mocha.checkLeaks();
     </script>
 
-    <div class=item id=el1>added before</div>
+    <div class=container>
+        <div class=item id=el1>added before</div>
+    </div>
 
     <script type=module>
     import {SelectorObserver} from '../SelectorObserver.js';
@@ -30,23 +32,30 @@
             on: el => lastAdded = el ,
             off : el => lastRemoved = el ,
         });
-        o.observe('.item');
+        o.observe('.container > .item');
+
+        it('found existing:', () => {
+            chai.expect(lastAdded).to.equal(el1);
+        });
 
         it('add dynamicly:', () => {
             const el = document.createElement('div');
             el.classList.add('item');
             el1.after(el);
-            setTimeout(function(){
+            setTimeout(()=>{
                 chai.expect(el).to.equal(lastAdded);
             })
         });
 
-        it('removing class from element 2:', () => {
-            el2.classList.remove('item');
+        it('remove class:', () => {
+            el1.classList.remove('item');
+            setTimeout(()=>{
+                chai.expect(lastRemoved).to.equal(el1);
+            })
         });
 
-        it('adding class to element 2:', () => {
-            el2.classList.add('item');
+        it('add class:', () => {
+            el1.classList.add('item');
         });
 
         it('remove element 2:', () => {
@@ -74,30 +83,6 @@
         });
     });
 
-    describe('setter', function () {
-        const body = document.body;
-
-
-
-        it('setting className on singel element', function () {
-            $(body).className = 'test';
-            chai.expect(body.className).to.equal('test');
-        });
-        it('setting className on multiple elements', function () {
-            $('body, head').className = 'test2';
-            chai.expect(document.body.className).to.equal('test2');
-            chai.expect(document.head.className).to.equal('test2');
-        });
-        it('setting multiple events', function () {
-            var listener = function(){ };
-            $('body, head').onmouseover = listener;
-            chai.expect(document.body.onmouseover).to.equal(listener);
-            chai.expect(document.head.onmouseover).to.equal(listener);
-        });
-        it('setting on void list', function () {
-            $('.doesnotExists').classList = 'xyz';
-        });
-    });
     </script>
     <script class="mocha-exec" type=module>
       mocha.run();
