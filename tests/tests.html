@@ -125,7 +125,18 @@
             o.observe('.test #el1', {checkAnimation: true});
             container.classList.add('test');
         });
+        it('nested, remove parent class:', done => {
+            let o = new SelectorObserver({
+                off: el => {
+                    chai.expect(el.id).to.equal('el1');
+                    done();
+                }
+            })
+            o.observe('.test #el1', {checkAnimation: true});
+            container.classList.remove('test');
+        });
     });
+
 
     </script>
     <script class="mocha-exec" type=module>
