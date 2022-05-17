@@ -32,7 +32,7 @@
             on: el => lastAdded = el ,
             off : el => lastRemoved = el ,
         });
-        o.observe('.container > .item');
+        o.observe('.container .item');
 
         it('found existing:', () => {
             chai.expect(lastAdded).to.equal(el1);
@@ -57,6 +57,9 @@
 
         it('remove element 2:', () => {
             el2.remove();
+            setTimeout(()=>{
+                chai.expect(lastRemoved).to.equal(el2);
+            })
         });
 
         it('add wrapped:', () => {
