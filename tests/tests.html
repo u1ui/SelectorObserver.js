@@ -52,7 +52,7 @@
         });
 
         it('remove class:', done => {
-            lastAdded = lastRemoved = null;
+//            lastAdded = lastRemoved = null;
             el2.classList.remove('item');
             setTimeout(()=>{
                 chai.expect(lastRemoved).to.equal(el2);
