@@ -49,7 +49,7 @@
             setTimeout(()=>{
                 chai.expect(lastAdded).to.equal(el2);
                 done();
-            },40)
+            },50)
         });
 
         it('remove class:', done => {
@@ -59,7 +59,7 @@
                 chai.expect(lastRemoved).to.equal(el2);
                 el2.classList.add('item');
                 done();
-            },40)
+            },50)
         });
 
         it('nested, remove parent class: (should not work)', done => {
@@ -69,7 +69,7 @@
                 chai.expect(lastRemoved).to.equal(null);
                 container.classList.add('container');
                 done();
-            });
+            },50);
         });
 
         it('add wrapped:', done => {
@@ -78,7 +78,7 @@
             setTimeout(()=>{
                 chai.expect(lastAdded.id).to.equal('el3');
                 done();
-            })
+            },50)
         });
 
         it('remove wrapped:', done => {
@@ -87,7 +87,7 @@
             setTimeout(()=>{
                 chai.expect(lastRemoved.id).to.equal('el3');
                 done();
-            })
+            },50)
         });
 
         it('move node but keep it matched to the selector:', done => {
