@@ -18,7 +18,7 @@
         mocha.checkLeaks();
     </script>
 
-    <div class=container>
+    <div class=container id=container>
         <div class=item id=el1>added before</div>
     </div>
 
@@ -96,6 +96,7 @@
             });
             o.observe('.container .item', {checkAnimation:true});
 
+            container.classList.remove('item');
 
             lastAdded = lastRemoved = null;
             o.disconnect();
