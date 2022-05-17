@@ -37,6 +37,7 @@
         let el2 = document.createElement('div');
         el2.classList.add('item');
         el2.id = 'el2';
+        el2.innerHTML = 'dynamicly added';
 
         it('found existing:', () => {
             chai.expect(lastAdded).to.equal(el1);
@@ -56,6 +57,7 @@
             el2.classList.remove('item');
             setTimeout(()=>{
                 chai.expect(lastRemoved).to.equal(el2);
+                el2.classList.add('item');
                 done();
             })
         });
@@ -91,9 +93,7 @@
         it('move node but keep it matched to the selector:', done => {
             lastAdded = lastRemoved = null;
             el2.remove();
-            setTimeout(()=>{
-//                container.prepend(el2);
-            })
+            container.prepend(el2);
             setTimeout(()=>{
                 console.log(lastAdded, lastRemoved)
 //                chai.expect(lastRemoved.id).to.equal('el2');
