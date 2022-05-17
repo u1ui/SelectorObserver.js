@@ -100,6 +100,83 @@
 
     });
 
+
+
+    describe('SelectorObserver check by animationend', () => {
+        let lastAdded = null;
+        let lastRemoved = null;
+        let o = new SelectorObserver({
+            on: el => lastAdded = el ,
+            off : el => lastRemoved = el ,
+        });
+        o.observe('.container .item', {checkAnimation:true});
+
+        let el2 = document.createElement('div');
+        el2.classList.add('item');
+        el2.id = 'el2';
+
+        it('found existing:', () => {
+            chai.expect(lastAdded).to.equal(el1);
+        });
+
+        it('add dynamicly:', done => {
+            lastAdded = lastRemoved = null;
+            el1.after(el2)
+            setTimeout(()=>{
+                chai.expect(lastAdded).to.equal(el2);
+                done();
+            })
+        });
+
+        it('remove class:', done => {
+            lastAdded = lastRemoved = null;
+            el2.classList.remove('item');
+            setTimeout(()=>{
+                chai.expect(lastRemoved).to.equal(el2);
+                done();
+            })
+        });
+
+        it('remove parent class: (should not work)', done => {
+            lastAdded = lastRemoved = null;
+            container.classList.remove('item');
+            setTimeout(()=>{
+                chai.expect(lastRemoved).to.equal(null);
+                done();
+                container.classList.add('item');
+            });
+        });
+
+        it('add wrapped:', done => {
+            lastAdded = lastRemoved = null;
+            el1.insertAdjacentHTML('afterend', '<div id=wrapper><div class=item id=el2>wrapped</div></div>');
+            setTimeout(()=>{
+                chai.expect(lastAdded.id).to.equal('el2');
+                done();
+            })
+        });
+
+        it('remove wrapped:', done => {
+            lastAdded = lastRemoved = null;
+            wrapper.remove();
+            setTimeout(()=>{
+                chai.expect(lastRemoved.id).to.equal('el2');
+                done();
+            })
+        });
+
+        it('add after disconnect:', done => {
+            lastAdded = lastRemoved = null;
+            o.disconnect();
+            el1.insertAdjacentHTML('afterend', '<div class=item id=afterDisconnect>after disconnect</div>');
+            setTimeout(()=>{
+                chai.expect(lastAdded).to.equal(null);
+                done();
+            });
+        });
+
+    });
+
     </script>
     <script class="mocha-exec" type=module>
       mocha.run();
