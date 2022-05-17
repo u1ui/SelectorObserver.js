@@ -44,7 +44,7 @@ class _animationObserver {
 
         this.style.innerHTML =
         `@keyframes ${this.animationName}{}\n`+
-        `${selector}{animation:${this.animationName} 1ms}`+;
+        `${selector}{animation:${this.animationName} 1ms}`;
         document.head.append(this.style);
         aObservers.add(this);
     }
