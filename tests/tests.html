@@ -60,19 +60,15 @@
             })
         });
 
-        it('remove parent class:', done => {
+        it('remove parent class: (should not work)', done => {
             lastAdded = lastRemoved = null;
             container.classList.remove('item');
-
-            lastAdded = lastRemoved = null;
-            o.disconnect();
-            el1.insertAdjacentHTML('afterend', '<div class=item id=afterDisconnect>after disconnect</div>');
             setTimeout(()=>{
-                chai.expect(lastAdded).to.equal(null);
+                chai.expect(lastRemoved).to.equal(null);
                 done();
+                container.classList.add('item');
             });
         });
-
 
         it('add wrapped:', done => {
             lastAdded = lastRemoved = null;
