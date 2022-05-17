@@ -123,9 +123,9 @@ export class SelectorObserver {
     _treeModified(target) {
         target.matches(this.selector) ? this._add(target) : this._remove(target);
         // for the moment subtree not checked
-        // if (this.options.deep) {
-        //     for (const el of this.elements) if (!el.matches(this.selector)) this._remove(el);
-        //     for (const el of target.querySelectorAll(this.selector)) this._add(el);
-        // }
+        if (this.options.deep) {
+            for (const el of this.elements) if (!el.matches(this.selector)) this._remove(el);
+            for (const el of target.querySelectorAll(this.selector)) this._add(el);
+        }
     }
 }
