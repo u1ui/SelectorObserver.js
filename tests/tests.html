@@ -47,6 +47,7 @@
         });
 
         it('remove class:', () => {
+            lastAdded = lastRemoved = null;
             el2.classList.remove('item');
             setTimeout(()=>{
                 chai.expect(lastRemoved).to.equal(el2);
@@ -54,6 +55,7 @@
         });
 
         it('remove element:', () => {
+            lastAdded = lastRemoved = null;
             el2.remove();
             setTimeout(()=>{
                 chai.expect(lastRemoved).to.equal(el2);
@@ -61,13 +63,17 @@
         });
 
         it('add wrapped:', () => {
+            lastAdded = lastRemoved = null;
+            console.log(lastAdded)
             el1.insertAdjacentHTML('afterend', '<div id=wrapper><div class=item id=el2>dynamic</div></div>');
             setTimeout(()=>{
+                console.log(lastAdded)
                 chai.expect(lastAdded).to.equal(el2);
             })
         });
 
         it('remove wrapped:', () => {
+            lastAdded = lastRemoved = null;
             wrapper.remove();
             setTimeout(()=>{
                 chai.expect(lastRemoved).to.equal(el2);
