@@ -39,6 +39,7 @@ let aObservers = new Set();
 class _animationObserver {
     constructor(selector, callback) {
         this.callback = callback;
+        // todo?: reuse style element if selector already exists
         this.style = document.createElement('style');
         this.animationName = `observer-animation-${animationCounter++}`;
 
