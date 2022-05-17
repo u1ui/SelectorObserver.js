@@ -55,7 +55,7 @@
             })
         });
 
-        it('remove element 2:', () => {
+        it('remove element:', () => {
             el2.remove();
             setTimeout(()=>{
                 chai.expect(lastRemoved).to.equal(el2);
@@ -63,8 +63,12 @@
         });
 
         it('add wrapped:', () => {
-            el1.after(el2);
-            el1.insertAdjacentHTML('afterend', '<div id=wrapped><div class="wrapped item">wrapped</div></div>');
+            const el = document.createElement('div');
+            el.classList.add('wrapper');
+            el1.after(el);
+            setTimeout(()=>{
+                chai.expect(lastRemoved).to.equal(el2);
+            })
         });
 
         it('remove wrapped:', () => {
