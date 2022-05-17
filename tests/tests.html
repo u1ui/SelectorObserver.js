@@ -32,7 +32,8 @@
             on: el => lastAdded = el ,
             off : el => lastRemoved = el ,
         });
-        o.observe('.container .item');
+        const options = {};
+        o.observe('.container .item', options);
 
         let el2 = document.createElement('div');
         el2.classList.add('item');
@@ -64,6 +65,17 @@
 
         it('nested, remove parent class: (should not work)', done => {
             lastAdded = lastRemoved = null;
+            container.classList.remove('container');
+            setTimeout(()=>{
+                chai.expect(lastRemoved).to.equal(null);
+                container.classList.add('container');
+                done();
+            },50);
+        });
+
+        it('nested, remove parent class: (should not work)', done => {
+            lastAdded = lastRemoved = null;
+            options.deep = true;
             container.classList.remove('container');
             setTimeout(()=>{
                 chai.expect(lastRemoved).to.equal(null);
