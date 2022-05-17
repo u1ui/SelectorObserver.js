@@ -33,8 +33,8 @@
 
 
             let o = new SelectorObserver({
-                on: el => {
-                    chai.expect(lastRemoved).to.equal(null);
+                off: el => {
+                    console.log(el)
                     chai.expect(el).to.equal(null);
                     container.classList.add('container');
                 }
