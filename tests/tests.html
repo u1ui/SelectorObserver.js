@@ -103,6 +103,8 @@
 
 
     describe('SelectorObserver check by animationend', () => {
+        container.innerHTML = '<div class=item id=el1>added before</div>';
+
         let lastAdded = null;
         let lastRemoved = null;
         let o = new SelectorObserver({
