@@ -73,12 +73,12 @@
             },50);
         });
 
-        it('nested, remove parent class: (should not work)', done => {
+        it('nested, remove parent class: (using deep)', done => {
             lastAdded = lastRemoved = null;
             options.deep = true;
             container.classList.remove('container');
             setTimeout(()=>{
-                chai.expect(lastRemoved).to.equal(null);
+                chai.expect(lastRemoved).to.equal(el2);
                 container.classList.add('container');
                 done();
             },50);
