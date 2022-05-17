@@ -95,13 +95,12 @@
             el2.remove();
             container.prepend(el2);
             setTimeout(()=>{
-                console.log(lastAdded, lastRemoved)
-//                chai.expect(lastRemoved.id).to.equal('el2');
-//                chai.expect(lastRemoved.id).to.equal('el2');
+                chai.expect(lastRemoved.id).to.equal('el2');
+                chai.expect(lastAdded.id).to.equal('el2');
                 done();
             },100)
         });
-return;
+
         it('add after disconnect:', done => {
             lastAdded = lastRemoved = null;
             o.disconnect();
@@ -116,7 +115,6 @@ return;
     });
 
     describe('SelectorObserver check by animationend', () => {
-        return;
         it('nested, add parent class:', done => {
             let o = new SelectorObserver({
                 on: el => {
@@ -124,7 +122,7 @@ return;
                     done();
                 }
             })
-            o.observe('.test #el1:first-child', {checkAnimation: true});
+            o.observe('.test #el1', {checkAnimation: true});
             container.classList.add('test');
         });
     });
