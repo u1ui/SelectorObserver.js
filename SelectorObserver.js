@@ -44,8 +44,8 @@ class _animationObserver {
 
         this.style.innerHTML =
         `@keyframes ${this.animationName}{}\n`+
-        `${selector}{animation:${this.animationName} .1ms}`+
         `.u1sOTracked:not(${selector}){animation:${this.animationName} .1ms}`+
+        `${selector}{animation:${this.animationName} .1ms}`+
         ``; // todo: :where() when supported
         document.head.append(this.style);
         aObservers.add(this);
