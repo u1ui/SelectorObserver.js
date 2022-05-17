@@ -34,6 +34,7 @@ function checkMutations(mutations) {
 
 
 // animation observer (beta), todo:refine and performance tests, problem: can not set multiple animation per selector => can be overwritten
+/*
 let animationCounter = 0;
 let aObservers = new Set();
 class _animationObserver {
@@ -67,7 +68,7 @@ document.addEventListener('animationstart', e => { // todo: remove/add listener 
         }
     }
 });
-
+*/
 
 
 
@@ -75,7 +76,7 @@ document.addEventListener('animationstart', e => { // todo: remove/add listener 
 
 export class SelectorObserver {
     constructor({on, off}) {
-        this.elements = new WeakSet(); // todo WeakRef: to be able to loop over elements
+        this.elements = new WeakSet(); // todo WeakRef-Set: to be able to loop over elements
         this._on = on;
         this._off = off;
     }
@@ -85,14 +86,16 @@ export class SelectorObserver {
         const els = document.querySelectorAll(this.selector);
         for (const el of els) this._add(el);
 
-        if (options.checkMutations!==false) {
+        //if (options.checkMutations!==false) {
             observers.add(this);
-        }
+        //}
+        /*
         if (options && options.checkAnimation) {
             this.aniObserver = new _animationObserver(this.selector, el=>{
                 el.matches(this.selector) ? this._add(el) : this._remove(el);
             });
         }
+        */
     }
     disconnect() {
         observers.delete(this);
