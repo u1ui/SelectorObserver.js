@@ -36,7 +36,9 @@
             const el = document.createElement('div');
             el.classList.add('item');
             el1.after(el);
-            chai.expect(el).to.equal(lastAdded);
+            setTimeout(function(){
+                chai.expect(el).to.equal(lastAdded);
+            })
         });
 
         it('removing class from element 2:', () => {
