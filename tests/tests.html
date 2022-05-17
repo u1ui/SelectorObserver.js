@@ -89,6 +89,23 @@
             });
         });
 
+        it('add after disconnect:', done => {
+            let o = new SelectorObserver({
+                on: el => lastAdded = el ,
+                off : el => lastRemoved = el ,
+            });
+            o.observe('.container .item', {checkAnimation:true});
+
+
+            lastAdded = lastRemoved = null;
+            o.disconnect();
+            el1.insertAdjacentHTML('afterend', '<div class=item id=afterDisconnect>after disconnect</div>');
+            setTimeout(()=>{
+                chai.expect(lastAdded).to.equal(null);
+                done();
+            });
+        });
+
     });
 
     </script>
