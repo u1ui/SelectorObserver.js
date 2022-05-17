@@ -33,7 +33,7 @@ function checkMutations(mutations) {
 }
 
 
-// animation observer (beta), todo: refine and performance tests
+// animation observer (beta), todo:refine and performance tests, problem: can not set multiple animation per selector => can be overwritten
 let animationCounter = 0;
 let aObservers = new Set();
 class _animationObserver {
