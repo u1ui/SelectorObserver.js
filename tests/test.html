@@ -65,11 +65,11 @@ setTimeout(()=>{
 */
 
 function addALotOfElements(){
-    let html = '<div id=aLot style="font-size:7px" hidden><div>';
+    let html = '<div id=aLot style="font-size:7px" hidden><div><div><div>';
     for (let i=0; i<10000; i++) {
         html += '<div class=item>item '+(i+1)+'</div>';
     }
-    html += '</div></div>';
+    html += '</div></div></div></div>';
     document.body.insertAdjacentHTML('beforeend', html);
 }
 
