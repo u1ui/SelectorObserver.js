@@ -77,8 +77,8 @@ function addALotOfElements(){
 setTimeout(()=>{
 
     let o = new SelectorObserver({
-        on: el => console.log(el) ,
-        off : el => el===1,
+        on: el => el ,
+        off : el => el,
     });
     o.observe('.item');
 
