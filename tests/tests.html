@@ -20,7 +20,6 @@
 
     <div class=container>
         <div class=item id=el1>added before</div>
-        <div id=wrapper></div>
     </div>
 
     <script type=module>
@@ -40,19 +39,16 @@
         });
 
         it('add dynamicly:', () => {
-            const el = document.createElement('div');
-            el.classList.add('item');
-            el.id = 'el2';
-            el1.after(el);
+            el1.insertAdjacentHTML('afterend', '<div class=item id=el2>dynamic</div>');
             setTimeout(()=>{
-                chai.expect(el).to.equal(lastAdded);
+                chai.expect(lastAdded).to.equal(el2);
             })
         });
 
         it('remove class:', () => {
-            el1.classList.remove('item');
+            el2.classList.remove('item');
             setTimeout(()=>{
-                chai.expect(lastRemoved).to.equal(el1);
+                chai.expect(lastRemoved).to.equal(el2);
             })
         });
 
@@ -64,17 +60,17 @@
         });
 
         it('add wrapped:', () => {
-            const el = document.createElement('div');
-            el.classList.add('wrapper');
-            el1.after(el);
-            el.after(el2)
+            el1.insertAdjacentHTML('afterend', '<div id=wrapper><div class=item id=el2>dynamic</div></div>');
             setTimeout(()=>{
                 chai.expect(lastAdded).to.equal(el2);
             })
         });
 
         it('remove wrapped:', () => {
-            wrapped.remove();
+            wrapper.remove();
+            setTimeout(()=>{
+                chai.expect(lastRemoved).to.equal(el2);
+            })
         });
 
         it('add after disconnect:', () => {
