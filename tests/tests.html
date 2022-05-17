@@ -83,7 +83,7 @@
             o.disconnect();
             el1.insertAdjacentHTML('afterend', '<div class=item>after disconnect</div>');
             setTimeout(()=>{
-                chai.expect(lastAdded).to.equal(el2);
+                chai.expect(lastAdded).to.not.equal(el2);
                 done();
             });
         });
