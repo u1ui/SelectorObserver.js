@@ -43,10 +43,9 @@ class _animationObserver {
         this.style = document.createElement('style');
         this.animationName = `u1-selObs-${animationCounter++}`;
 
-        this.style.innerHTML = `
-        `@keyframes ${this.animationName}{}`+
-        `${selector}{animation:${this.animationName} 1ms}`
-        ;
+        this.style.innerHTML = 
+            `@keyframes ${this.animationName}{}`+
+            `${selector}{animation:${this.animationName} 1ms}`;
         document.head.append(this.style);
         aObservers.add(this);
     }
