@@ -46,9 +46,7 @@ class _animationObserver {
 
         this.style.innerHTML =
         `@keyframes ${this.animationName}{}\n`+
-        `@keyframes ${this.animationName}-end{}\n`+
-        `${selector}{animation:${this.animationName} 1ms}`+
-        `:not(.u1-selObs-tracked):is(${selector}){animation:${this.animationName}-end 1ms}`;
+        `${selector}{animation:${this.animationName} 1ms}`+;
         document.head.append(this.style);
         aObservers.add(this);
     }
@@ -61,11 +59,6 @@ document.addEventListener('animationstart', e => { // todo: remove/add listener 
     for (const observer of aObservers) {
         if (e.animationName === observer.animationName) {
             observer.on(e.target);
-            e.target.classList.add('u1-selObs-tracked');
-        }
-        if (e.animationName === observer.animationName+'-end') {
-            observer.off(e.target);
-            e.target.classList.remove('u1-selObs-tracked');
         }
     }
 });
