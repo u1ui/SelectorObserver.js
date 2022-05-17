@@ -3,7 +3,7 @@
 Monitor DOM elements that match a CSS selector
 
 ## Ussage
-    
+
 ```javascript
 
 import { SelectorObserver } from 'https://cdn.jsdelivr.net/gh/u1ui/SelectorObserver.js@x.x.x/SelectorObserver.min.js';
