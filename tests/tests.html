@@ -18,6 +18,7 @@
         mocha.checkLeaks();
     </script>
 
+    <div class=item id=el1>added before</div>
 
     <script type=module>
     import {SelectorObserver} from '../SelectorObserver.js';
@@ -31,9 +32,11 @@
         });
         o.observe('.item');
 
-        it('add element 2:', () => {
-            el1.insertAdjacentHTML('afterend', '<div class=item id=el2>element 2</div>');
-
+        it('add dynamicly:', () => {
+            const el = document.creatElement('div');
+            el.classList.add('item');
+            el1.after(el);
+            chai.expect(el).to.equal(lastAdded);
         });
 
         it('removing class from element 2:', () => {
