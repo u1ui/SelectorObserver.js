@@ -41,12 +41,12 @@ class _animationObserver {
         this.callback = callback;
         // todo?: reuse style element if selector already exists
         this.style = document.createElement('style');
-        this.animationName = `observer-animation-${animationCounter++}`;
+        this.animationName = `u1-selObs-${animationCounter++}`;
 
         this.style.innerHTML = `
-        @keyframes ${this.animationName} {}
-        ${selector} { animation: ${this.animationName} 1ms; }
-        `;
+        `@keyframes ${this.animationName}{}`+
+        `${selector}{animation:${this.animationName} 1ms}`
+        ;
         document.head.append(this.style);
         aObservers.add(this);
     }
