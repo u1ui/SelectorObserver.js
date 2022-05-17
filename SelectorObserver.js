@@ -61,10 +61,6 @@ document.addEventListener('animationstart', e => { // todo: remove/add listener 
             observer.on(e.target);
             e.target.classList.add('u1sOTracked');
         }
-        if (e.animationName === observer.animationName+'-lost') {
-            observer.on(e.target);
-            e.target.classList.remove('u1sOTracked');
-        }
     }
 });
 
