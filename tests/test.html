@@ -75,13 +75,19 @@ function addALotOfElements(){
 
 
 setTimeout(()=>{
+
+    let o = new SelectorObserver({
+        on: el => el===1 ,
+        off : el => el===1,
+    });
+    o.observe('.item');
+
     const time = performance.now();
     addALotOfElements();
     console.log('added 100000 elements', performance.now()-time);
 }, 6000);
 
 setTimeout(()=>{
-    o.disconnect();
     const time = performance.now();
     addALotOfElements();
     console.log('added 100000 elements after disconnect', performance.now()-time);
