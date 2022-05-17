@@ -44,8 +44,9 @@ class _animationObserver {
 
         this.style.innerHTML =
         `@keyframes ${this.animationName}{}\n`+
+        `@keyframes ${this.animationName}-lost{}\n`+
         `${selector}{animation:${this.animationName} .1ms}`+
-        `.u1sOTracked:not(${selector}){animation:${this.animationName} .1ms}`+
+        `.u1sOTracked:not(${selector}){animation:${this.animationName}-lost .1ms}`+
         ``; // todo: :where() when supported
         document.head.append(this.style);
         aObservers.add(this);
@@ -61,9 +62,9 @@ document.addEventListener('animationstart', e => { // todo: remove/add listener 
             observer.on(e.target);
             e.target.classList.add('u1sOTracked');
         }
-        if (e.animationName === observer.animationName+'-end') {
+        if (e.animationName === observer.animationName+'-lost') {
             observer.on(e.target);
-//            e.target.classList.toggle('u1sOTracked');
+            e.target.classList.remove('u1sOTracked');
         }
     }
 });
