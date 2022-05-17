@@ -24,8 +24,7 @@ o.observer('.el', {checkAnimation: true});
 ```
 
 Like this, you can event watch selectors like `.el:has(img:hover) > tr:nth-child(2)`  
-`off` does not work right now.
+Trigger only `on` and not `off` right now.
 
 ## Demo
 https://raw.githack.com/u1ui/SelectorObserver.js/main/tests/test.html  
-
