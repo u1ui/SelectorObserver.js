@@ -33,7 +33,7 @@
         o.observe('.item');
 
         it('add dynamicly:', () => {
-            const el = document.creatElement('div');
+            const el = document.createElement('div');
             el.classList.add('item');
             el1.after(el);
             chai.expect(el).to.equal(lastAdded);
