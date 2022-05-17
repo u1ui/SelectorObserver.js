@@ -60,7 +60,7 @@
             })
         });
 
-        it('remove parent class: (should not work)', done => {
+        it('nested, remove parent class: (should not work)', done => {
             lastAdded = lastRemoved = null;
             container.classList.remove('container');
             setTimeout(()=>{
@@ -104,16 +104,15 @@
 
 
     describe('SelectorObserver check by animationend', () => {
-        it('remove parent class:', done => {
+        it('nested, add parent class:', done => {
             let o = new SelectorObserver({
                 on: el => {
-                    chai.expect(el).to.equal(null);
-//                    container.classList.add('container');
+                    chai.expect(el.id).to.equal('el1');
+                    done();
                 }
             })
-            container.classList.remove('container');
-            o.observe('.container .item', {checkAnimation: true});
-            container.classList.add('container');
+            o.observe('.test #el1:first-child', {checkAnimation: true});
+            container.classList.add('test');
         });
 
 
