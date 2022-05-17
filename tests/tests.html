@@ -108,7 +108,6 @@
             let o = new SelectorObserver({
                 on: el => {
                     console.log(el)
-
                 },
                 off: el => {
                     console.log(el)
@@ -116,7 +115,7 @@
                     container.classList.add('container');
                 }
             })
-            o.observe('.container .item');
+            o.observe('.container .item', {checkAnimation: true});
             container.classList.add('container');
         });
 
