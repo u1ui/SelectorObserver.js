@@ -44,7 +44,6 @@ class _animationObserver {
         // this way we dont overwrite elements targeting by multiple observers,
         // but we have to match the selector for every observer
         this.style = document.createElement('style');
-        console.log(this.style)
         this.animationName = `u1-selObs-${animationCounter++}`;
 
         this.style.innerHTML =
