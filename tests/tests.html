@@ -90,8 +90,11 @@
 
         it('move node but keep it matched to the selector:', done => {
             lastAdded = lastRemoved = null;
-            wrapper.remove();
+            el2.remove();
+            container.prepend(el2);
             setTimeout(()=>{
+                console.log(lastAdded, lastRemoved)
+                chai.expect(lastRemoved.id).to.equal('el2');
                 chai.expect(lastRemoved.id).to.equal('el2');
                 done();
             })
