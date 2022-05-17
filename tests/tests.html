@@ -49,7 +49,7 @@
             setTimeout(()=>{
                 chai.expect(lastAdded).to.equal(el2);
                 done();
-            },30)
+            },40)
         });
 
         it('remove class:', done => {
@@ -59,8 +59,9 @@
                 chai.expect(lastRemoved).to.equal(el2);
                 el2.classList.add('item');
                 done();
-            },30)
+            },40)
         });
+        return;
 
         it('nested, remove parent class: (should not work)', done => {
             lastAdded = lastRemoved = null;
