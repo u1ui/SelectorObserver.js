@@ -135,14 +135,15 @@
             })
         });
 
-        it('remove parent class: (should not work)', done => {
+        it('remove parent class:', done => {
             lastAdded = lastRemoved = null;
             container.classList.remove('item');
             setTimeout(()=>{
+                console.log(lastRemoved)
                 chai.expect(lastRemoved).to.equal(null);
                 done();
                 container.classList.add('item');
-            });
+            },200);
         });
 
         it('add wrapped:', done => {
