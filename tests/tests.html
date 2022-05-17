@@ -28,39 +28,19 @@
     describe('SelectorObserver', () => {
         let lastAdded = null;
         let lastRemoved = null;
-
-        it('remove parent class: (should not work)', done => {
-
-            let o = new SelectorObserver({
-                off: el => {
-                    console.log(el)
-                    chai.expect(el).to.equal(null);
-                    container.classList.add('container');
-                }
-            }).observe('.container .item');
-
-            container.classList.remove('container');
-
-        });
-
-
-    });
-
-
-
-    describe('SelectorObserver check by animationend', () => {
-
-        let lastAdded = null;
-        let lastRemoved = null;
         let o = new SelectorObserver({
             on: el => lastAdded = el ,
             off : el => lastRemoved = el ,
         });
-        o.observe('.container .item', {checkAnimation:true});
+        o.observe('.container .item');
 
         let el2 = document.createElement('div');
         el2.classList.add('item');
         el2.id = 'el2';
+
+        it('found existing:', () => {
+            chai.expect(lastAdded).to.equal(el1);
+        });
 
         it('add dynamicly:', done => {
             lastAdded = lastRemoved = null;
@@ -80,15 +60,14 @@
             })
         });
 
-        it('remove parent class:', done => {
+        it('remove parent class: (should not work)', done => {
             lastAdded = lastRemoved = null;
             container.classList.remove('container');
-
             setTimeout(()=>{
                 chai.expect(lastRemoved).to.equal(null);
-                container.classList.add('container');
                 done();
-            },100);
+                container.classList.add('container');
+            });
         });
 
         it('add wrapped:', done => {
@@ -115,9 +94,28 @@
             el1.insertAdjacentHTML('afterend', '<div class=item id=afterDisconnect>after disconnect</div>');
             setTimeout(()=>{
                 chai.expect(lastAdded).to.equal(null);
+                afterDisconnect.remove();
                 done();
             });
         });
+
+    });
+
+
+
+    describe('SelectorObserver check by animationend', () => {
+        it('remove parent class: (should not work)', done => {
+            let o = new SelectorObserver({
+                off: el => {
+                    console.log(el)
+                    chai.expect(el).to.equal(null);
+                    container.classList.add('container');
+                }
+            }).observe('.container .item');
+        });
+
+
+
 
     });
 
