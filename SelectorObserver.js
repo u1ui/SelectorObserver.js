@@ -94,6 +94,7 @@ export class SelectorObserver {
             this.aniObserver = new _animationObserver(this.selector, el=>{
                 el.matches(this.selector) ? this._add(el) : this._remove(el);
             }, el=>{
+                console.log(el)
                 el.matches(this.selector) ? this._add(el) : this._remove(el);
             });
         }
