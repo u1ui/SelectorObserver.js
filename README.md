@@ -28,5 +28,7 @@ Like this, you can event watch selectors like `.el:has(img:hover) > tr:nth-child
 Trigger only `on` and not `off` right now.
 -->
 
-## Demo
+## Demos
 https://raw.githack.com/u1ui/SelectorObserver.js/main/tests/test.html  
+https://raw.githack.com/u1ui/SelectorObserver.js/main/tests/tests.html  
+
