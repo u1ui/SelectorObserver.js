@@ -14,12 +14,14 @@
 <body>
 
     <section>
-        <button onclick="lost.append(container.lastElementChild )">add item</button>
-        <button onclick="container.append(document.createElement('div'))">remove item</button>
-        <div id=container>
+        <button onclick="container.append(document.createElement('div'))">add item</button>
+        <button onclick="lost.append(container.lastElementChild )">remove item</button>
+        <h2>Targets</h2>
+        <div class=container id=container>
             <div></div>
         </div>
-        <div id=lost>
+        <h2>Non targets</h2>
+        <div class=container id=lost>
         </div>
     </section>
 
@@ -30,7 +32,9 @@ let o = new SelectorObserver({
     on: el => {
         el.innerHTML = 'found!';
     } ,
-    off : el => console.log('removed', el),
+    off : el => {
+        el.innerHTML = 'lost!';
+    },
 });
 o.observe('#container > div');
 </script>
@@ -40,9 +44,17 @@ o.observe('#container > div');
         display:flex;
         flex-wrap:wrap;
     }
-    #container div {
+    .container div {
         background-color:var(--color-light);
         margin:.5rem;
         padding:.5rem;
+    }
+    .container div {
+        background-color:var(--color-light);
+        margin:.5rem;
+        padding:.5rem;
+    }
+    #lost div {
+        background-color:var(--color2-light);
     }
 </style>
