@@ -57,10 +57,12 @@ o.observe('#container > div');
     #lost div {
         background-color:var(--color2-light);
     }
+    button {
+        text-align: center;
+    }
     button::after {
-        content: attr(onclick);
-        content: attr(onclick) + '\nx';
-        display: inline-block;
+        content: " " attr(onclick);
+        display: block;
         font-size:.7rem;
     }
 </style>
