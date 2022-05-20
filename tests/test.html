@@ -13,11 +13,12 @@
     <link rel=stylesheet href="https://cdn.jsdelivr.net/gh/u1ui/table.class/table.css">
 <body>
 
-<button onclick="container.append(document.createElement('div'))">add item</button>
-
-<div id=container>
-    <div></div>
-</div>
+    <section>
+        <button onclick="container.append(document.createElement('div'))">add item</button>
+        <div id=container>
+            <div></div>
+        </div>
+    </section>
 
 
 <script type=module style="display:block">
@@ -38,7 +39,7 @@ o.observe('#container > div');
     }
     #container div {
         background-color:var(--color-light);
-        margin:1rem;
+        margin:.5rem;
         padding:1rem;
     }
 </style>
