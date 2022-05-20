@@ -6,101 +6,31 @@
 <title>u1-ico Test</title>
 <body>
 
+<button onclick="container.append(document.createElement('div'))">add item</button>
 
-<div class=item id=el1>added before</div>
+<div id=container>
+    <div></div>
+</div>
 
-<script type=module>
 
+<script type=module style="display:block">
 import {SelectorObserver} from '../SelectorObserver.js';
-
 let o = new SelectorObserver({
-    on: el => console.log('added', el) ,
+    on: el => {
+        el.innerHTML = 'found!';
+    } ,
     off : el => console.log('removed', el),
 });
-o.observe('.item');
-
-console.log('add element 2:');
-el1.insertAdjacentHTML('afterend', '<div class=item id=el2>element 2</div>');
-
-setTimeout(()=>{
-    console.log('removing class from element 2:');
-    el2.classList.remove('item');
-}, 1000);
-
-setTimeout(()=>{
-    console.log('adding class to element 2:');
-    el2.classList.add('item');
-}, 2000);
-
-setTimeout(()=>{
-    console.log('remove element 2:');
-    el2.remove();
-}, 3000);
-
-setTimeout(()=>{
-    console.log('add wrapped:');
-    el1.insertAdjacentHTML('afterend', '<div id=wrapped><div class="wrapped item">wrapped</div></div>');
-}, 4000);
-
-setTimeout(()=>{
-    console.log('remove wrapped:');
-    wrapped.remove();
-}, 5000);
-
-setTimeout(()=>{
-    o.disconnect();
-    console.log('add after disconnect:');
-    el1.insertAdjacentHTML('afterend', '<div class=item>after disconnect</div>');
-}, 6000);
-
-
-/*
-{
-    let o = new SelectorObserver({
-        on  : el=>console.log('mouseover',el),
-        off : el=>console.log('mouseout',el),
-    });
-    o.observe('.item:hover', {checkAnimation:true});
-}
-*/
-
-function addALotOfElements(){
-    let html = '<div id=aLot style="font-size:7px" hidden><div><div><div>';
-    for (let i=0; i<10000; i++) {
-        html += '<div class=item>item '+(i+1)+'</div>';
-    }
-    html += '</div></div></div></div>';
-    document.body.insertAdjacentHTML('beforeend', html);
-}
-
-setTimeout(()=>{
-
-    let o = new SelectorObserver({
-        on: el => el ,
-        off : el => el,
-    });
-    o.observe('.item');
-
-    const time = performance.now();
-    addALotOfElements();
-    requestAnimationFrame(()=>{
-        console.log('added 100000 elements', performance.now()-time);
-    })
-}, 6000);
-
-setTimeout(()=>{
-    const time = performance.now();
-    addALotOfElements();
-    requestAnimationFrame(()=>{
-        console.log('added 100000 elements', performance.now()-time);
-    })
-}, 7000);
-
-
+o.observe('#container > div');
 </script>
 
 <style>
-    .item {
-        background:yellow;
+    #container {
+        display:flex;
+        gap:1rem;
+    }
+    #container {
+        display:flex;
+        gap:1rem;
     }
 </style>
