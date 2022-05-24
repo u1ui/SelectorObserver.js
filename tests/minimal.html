@@ -13,10 +13,6 @@
     </section>
 
     <script type=module style="display:block;">
-        const {SelectorObserver} = await u1ui.import('SelectorObserver');
-
-
-
         import {SelectorObserver} from '../SelectorObserver.js';
         new SelectorObserver({
             on: el => el.innerHTML = 'found!' ,
