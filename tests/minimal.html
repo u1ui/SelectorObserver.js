@@ -10,12 +10,8 @@
 <body>
 
     <section>
-        <div class=container id=targets onclick="this.append(document.createElement('div'))">
-            Targets
-            <div></div>
-        </div>
-        <div class=container id=nonTargets>
-            Non targets
+        <div class=container id=SOTargets contenteditable>
+            Find all bold texts <b>Bold</b> (ctrl+b)
         </div>
     </section>
 
@@ -25,5 +21,5 @@
             on: el => el.innerHTML = 'found!' ,
             off: el => el.innerHTML = 'lost!' ,
         });
-        o.observe('#targets > div');
+        o.observe('#SOTargets b');
     </script>
