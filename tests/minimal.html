@@ -10,11 +10,22 @@
 <body>
 
     <section>
-        <u1-qrcode>Hello world</u1-qrcode>
+        <button onclick="targets.append(document.createElement('div'))">add item</button>
+        <button onclick="nonTargets.append(targets.lastElementChild )">remove item</button>
+        <h3>Targets</h3>
+        <div class=container id=targets>
+            <div></div>
+        </div>
+        <h3>Non targets</h3>
+        <div class=container id=nonTargets>
+        </div>
     </section>
 
-    <style>
-        u1-qrcode {
-            color:#888;
-        }
-    </style>
+    <script type=module style="display:block;">
+        import {SelectorObserver} from '../SelectorObserver.js';
+        let o = new SelectorObserver({
+            on: el => el.innerHTML = 'found!' ,
+            off: el => el.innerHTML = 'lost!' ,
+        });
+        o.observe('#targets > div');
+    </script>
