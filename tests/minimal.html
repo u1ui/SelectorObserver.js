@@ -12,7 +12,7 @@
     <section>
         <button onclick="targets.append(document.createElement('div'))">add item</button>
         <button onclick="nonTargets.append(targets.lastElementChild )">remove item</button>
-        <div class=container id=targets>
+        <div class=container id=targets onclick="this.append(document.createElement('div'))">
             Targets
             <div></div>
         </div>
