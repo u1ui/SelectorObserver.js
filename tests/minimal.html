@@ -4,9 +4,6 @@
     <meta charset=utf-8>
     <meta name=viewport content="width=device-width">
 
-    <link rel=stylesheet href="../qrcode.css">
-    <script src="../qrcode.js" type=module></script>
-
 <body>
 
     <section>
@@ -16,6 +13,15 @@
     </section>
 
     <script type=module style="display:block;">
+        u1ui.import('SelectorObserver').then(function(SO) {
+            var targets = document.querySelectorAll('#SOTargets');
+            var so = new SO(targets, {
+                onSelect: function(e) {
+                    console.log('Selected:', e.target);
+                }
+            });
+        });
+
         import {SelectorObserver} from '../SelectorObserver.js';
         new SelectorObserver({
             on: el => el.innerHTML = 'found!' ,
