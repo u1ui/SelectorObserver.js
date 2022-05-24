@@ -17,9 +17,8 @@
 
     <script type=module style="display:block;">
         import {SelectorObserver} from '../SelectorObserver.js';
-        let o = new SelectorObserver({
+        new SelectorObserver({
             on: el => el.innerHTML = 'found!' ,
             off: el => el.innerHTML = 'lost!' ,
-        });
-        o.observe('#SOTargets div');
+        }).observe('#SOTargets div');
     </script>
