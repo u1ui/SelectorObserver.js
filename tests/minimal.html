@@ -13,14 +13,9 @@
     </section>
 
     <script type=module style="display:block;">
-        u1ui.import('SelectorObserver').then(function(SO) {
-            var targets = document.querySelectorAll('#SOTargets');
-            var so = new SO(targets, {
-                onSelect: function(e) {
-                    console.log('Selected:', e.target);
-                }
-            });
-        });
+        const {SelectorObserver} = await u1ui.import('SelectorObserver');
+
+
 
         import {SelectorObserver} from '../SelectorObserver.js';
         new SelectorObserver({
