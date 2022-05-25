@@ -29,6 +29,7 @@ Trigger only `on` and not `off` right now.
 -->
 
 ## Demos
+https://raw.githack.com/u1ui/SelectorObserver.js/main/tests/minimal.html  
 https://raw.githack.com/u1ui/SelectorObserver.js/main/tests/test.html  
 https://raw.githack.com/u1ui/SelectorObserver.js/main/tests/tests.html  
 
