@@ -136,3 +136,31 @@ export class SelectorObserver {
         }
     }
 }
+
+
+/* nice shorthands, todo:test *
+
+export function observe(selector, on, off) {
+    const observer = new SelectorObserver({on, off})
+    observer.observe(selector);
+    return observer;
+}
+
+export function on(selector, fn){
+    const observer = new SelectorObserver({on:fn});
+    observer.observe(selector);
+}
+
+export function off(selector, fn){
+    const observer = new SelectorObserver({off:fn});
+    observer.observe(selector);
+}
+
+export function one(selector, fn){
+    const observer = new SelectorObserver({on:el=>{
+        observer.disconnect();
+        fn(el);
+    }});
+    observer.observe(selector);
+}
+/* */
