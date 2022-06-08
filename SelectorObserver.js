@@ -76,7 +76,7 @@ document.addEventListener('animationstart', e => { // todo: remove/add listener 
 
 export class SelectorObserver {
     constructor({on, off}) {
-        this.elements = new WeakSet(); // todo WeakRef-Set: to be able to loop over elements
+        this.targets = new Set(); // was WeakSet, but we clean targets anyway. Better WeakRef-Set? // rename to targets?
         this._on = on;
         this._off = off;
     }
@@ -98,17 +98,18 @@ export class SelectorObserver {
         */
     }
     disconnect() {
+        this.targets.clear();
         observers.delete(this);
-        this.aniObserver && this.aniObserver.disconnect();
+        //this.aniObserver && this.aniObserver.disconnect();
     }
     _add(el) {
-        if (this.elements.has(el)) return;
-        this.elements.add(el);
+        if (this.targets.has(el)) return;
+        this.targets.add(el);
         this._on && this._on(el);
     }
     _remove(el) {
-        if (!this.elements.has(el)) return;
-        this.elements.delete(el);
+        if (!this.targets.has(el)) return;
+        this.targets.delete(el);
         this._off && this._off(el);
     }
 
@@ -131,7 +132,7 @@ export class SelectorObserver {
             for (const el of target.querySelectorAll('*')) { // expected to be expensiv
                 el.matches(this.selector) ? this._add(el) : this._remove(el);
             }
-            //for (const el of this.elements) if (!el.matches(this.selector)) this._remove(el); // not iterable, use WeekRef if supported
+            //for (const el of this.targets) if (!el.matches(this.selector)) this._remove(el); // not iterable, use WeekRef if supported
             //for (const el of target.querySelectorAll(this.selector)) this._add(el);
         }
     }
