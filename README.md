@@ -1,14 +1,6 @@
 # SelectorObserver.js
 Monitor elements by CSS selector
 
-## Ussage
-
-```html
-<div class=container id=SOTargets contenteditable>
-    Find all bold divs (press enter)
-</div>
-```
-
 ## Install
 
 ```js
