@@ -1,6 +1,10 @@
 # SelectorObserver.js
 Monitor elements by CSS selector
 
+## Ussage
+
+[doc](https://doc.deno.land/https://cdn.jsdelivr.net/gh/u1ui/SelectorObserver.js@3.0.1/SelectorObserver.js)
+
 ## Install
 
 ```js
