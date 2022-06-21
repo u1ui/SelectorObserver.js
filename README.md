@@ -10,12 +10,12 @@ new SelectorObserver({
     off: el => el.innerHTML = 'lost!' ,
 }).observe('#SOTargets div');
 ```
-[doc](https://doc.deno.land/https://cdn.jsdelivr.net/gh/u1ui/SelectorObserver.js@3.0.1/SelectorObserver.js)
+[doc](https://doc.deno.land/https://cdn.jsdelivr.net/gh/u1ui/SelectorObserver.js@3.0.2/SelectorObserver.js)
 
 ## Install
 
 ```js
-import {SelectorObserver} from "https://cdn.jsdelivr.net/gh/u1ui/SelectorObserver.js@3.0.1/SelectorObserver.min.js"
+import {SelectorObserver} from "https://cdn.jsdelivr.net/gh/u1ui/SelectorObserver.js@3.0.2/SelectorObserver.min.js"
 ```
 
 ## Demos
