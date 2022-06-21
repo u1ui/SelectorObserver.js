@@ -86,6 +86,10 @@ export class SelectorObserver {
         this._on = on;
         this._off = off;
     }
+
+    /**
+     * @param {String} selector
+     */
     observe(selector, options={}) {
         this.selector = selector;
         this.options = options;
