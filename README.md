@@ -3,6 +3,8 @@ Monitor elements by CSS selector
 
 ## Ussage
 
+[doc](https://doc.deno.land/https://cdn.jsdelivr.net/gh/u1ui/SelectorObserver.js@3.0.2/SelectorObserver.js) 
+
 ```js
 import {SelectorObserver} from '../SelectorObserver.js';
 new SelectorObserver({
@@ -10,7 +12,11 @@ new SelectorObserver({
     off: el => el.innerHTML = 'lost!' ,
 }).observe('#SOTargets div');
 ```
-[doc](https://doc.deno.land/https://cdn.jsdelivr.net/gh/u1ui/SelectorObserver.js@3.0.2/SelectorObserver.js)
+```html
+<div class=container id=SOTargets contenteditable>
+    Find all bold divs (press enter)
+</div>
+```
 
 ## Install
 
