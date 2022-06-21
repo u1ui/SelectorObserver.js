@@ -107,34 +107,58 @@ export class SelectorObserver {
         }
         */
     }
+
+
+    /**
+     * @description disconnects the observer
+     */
     disconnect() {
         this.targets.clear();
         observers.delete(this);
         //this.aniObserver && this.aniObserver.disconnect();
     }
+
+    /**
+     * @private
+     */
     _add(el) {
         if (this.targets.has(el)) return;
         this.targets.add(el);
         this._on && this._on(el);
     }
-    _remove(el) {
+
+    /**
+     * @private
+     */
+     _remove(el) {
         if (!this.targets.has(el)) return;
         this.targets.delete(el);
         this._off && this._off(el);
     }
 
-    _addTree(target) {
+    /**
+     * @private
+     */
+     _addTree(target) {
         target.matches(this.selector) && this._add(target);
         if (document.readyState === 'complete') { // Before domready MutationObserver reports every node, ok?
             for (const el of target.querySelectorAll(this.selector)) this._add(el);
         }
     }
-    _removeTree(target) {
+
+    /**
+     * @private
+     */
+     _removeTree(target) {
         //if (!this._off) return; // performance
         this._remove(target);
         for (const el of target.querySelectorAll('*')) this._remove(el);
     }
-    _treeModified(target) {
+
+    /**
+     * @private
+     */
+     _treeModified(target) {
         target.matches(this.selector) ? this._add(target) : this._remove(target);
         // for the moment subtree not checked
         if (this.options.deep) {
