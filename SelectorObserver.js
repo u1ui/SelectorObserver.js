@@ -75,6 +75,12 @@ document.addEventListener('animationstart', e => { // todo: remove/add listener 
 
 
 export class SelectorObserver {
+
+    /**
+     * @param {Object} options
+     * @param {Function} options.on
+     * @param {Function} options.off
+     */
     constructor({on, off}) {
         this.targets = new Set(); // was WeakSet, but we clean targets anyway. Better WeakRef-Set? // rename to targets?
         this._on = on;
