@@ -17,7 +17,7 @@ new SelectorObserver({
 </div>
 ```
 
-[doc](https://doc.deno.land/https://cdn.jsdelivr.net/gh/u1ui/SelectorObserver.js@$x.x.x/SelectorObserver.js)
+[doc](https://doc.deno.land/https://cdn.jsdelivr.net/gh/u1ui/SelectorObserver.js@$main/SelectorObserver.js)
 
 ## Install
 
