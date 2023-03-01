@@ -31,7 +31,6 @@ import {SelectorObserver} from "https://cdn.jsdelivr.net/gh/u1ui/SelectorObserve
 [test.html](http://gcdn.li/u1ui/SelectorObserver.js@main/tests/test.html)  
 [tests.html](http://gcdn.li/u1ui/SelectorObserver.js@main/tests/tests.html)  
 
-<!--
 ## Options - "checkAnimation" (beta)
 
 ```javascript
@@ -47,3 +46,4 @@ Trigger only `on` and not `off` right now.
 
 - MIT License, Copyright (c) 2022 <u1> (like all repositories in this organization) <br>
 - Suggestions, ideas, finding bugs and making pull requests make us very happy. ♥
+
