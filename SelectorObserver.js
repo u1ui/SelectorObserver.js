@@ -60,7 +60,7 @@ class _animationObserver {
         aObservers.delete(this);
     }
 }
-document.addEventListener('animationstart', e => { // todo: remove/add listener by ussage
+document.addEventListener('animationstart', e => { // todo: remove/add listener by usage
     for (const observer of aObservers) {
         if (e.animationName === observer.animationName) {
             observer.on(e.target);
