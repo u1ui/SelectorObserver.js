@@ -31,7 +31,6 @@ import * as module from "https://cdn.jsdelivr.net/gh/u1ui/SelectorObserver.js@x.
 [test.html](http://gcdn.li/u1ui/SelectorObserver.js@main/tests/test.html)  
 [tests.html](http://gcdn.li/u1ui/SelectorObserver.js@main/tests/tests.html)  
 
-
 ## Options - "checkAnimation" (beta)
 
 ```javascript
